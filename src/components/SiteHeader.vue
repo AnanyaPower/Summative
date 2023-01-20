@@ -5,12 +5,20 @@
   <div class="name">
     <h1>CENTRAL PERK</h1>
   </div>
-  <RouterLink to="/login" custom v-slot="{ navigate }">
-    <button @click="navigate" role="link">Login</button>
-  </RouterLink>
-  <RouterLink to="/register" custom v-slot="{ navigate }">
-    <button @click="navigate" role="link">Register</button>
-  </RouterLink>
+  <table>
+    <tr>
+      <td>
+        <RouterLink to="/login" custom v-slot="{ navigate }">
+          <button @click="navigate" role="link">Login</button>
+        </RouterLink>
+      </td>
+      <td>
+        <RouterLink to="/register" custom v-slot="{ navigate }">
+          <button @click="navigate" role="link">Register</button>
+        </RouterLink>
+      </td>
+    </tr>
+  </table>
 </template>
 
 <style scoped>
@@ -25,6 +33,10 @@ h1 {
   padding: 1px 25px;
 }
 
+table {
+  margin: auto;
+}
+
 button {
   display: table;
   background-color: darkblue;
@@ -33,6 +45,5 @@ button {
   padding: 15px 32px;
   text-decoration: none;
   font-size: 16px;
-  margin-left: 85%;
 }
 </style>

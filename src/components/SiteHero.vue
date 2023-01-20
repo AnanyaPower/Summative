@@ -23,7 +23,8 @@
 }
 
 img {
-  width: 70%;
-  margin-top: 35px;
+  width: 50%;
+  height: auto;
+  margin-top: 50px;
 }
 </style>

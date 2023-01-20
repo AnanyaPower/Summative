@@ -1,11 +1,11 @@
 <script setup>
 import { ref } from "vue";
-import { auth } from "../firebase/index";
-import {
-  createUserWithEmailAndPassword,
-  GoogleAuthProvider,
-  signInWithPopup,
-} from "firebase/auth";
+// import { auth } from "../firebase/index";
+// import {
+//   createUserWithEmailAndPassword,
+//   GoogleAuthProvider,
+//   signInWithPopup,
+// } from "firebase/auth";
 
 const username = ref("");
 const email = ref("");
@@ -33,21 +33,18 @@ const registerUserByGoogle = async () => {
 
 <template>
   <div>
-    <!-- <h1>Login</h1> -->
     <div class="name">
       <h1>CENTRAL PERK</h1>
     </div>
     <div class="register-container">
-      <!-- <h2>Register by Google</h2>
-      <button @click="registerUserByGoogle">Google</button> -->
-      <!-- <hr /> -->
+      <h2>Register by Google</h2>
+      <button @click="registerUserByGoogle">Google</button>
       <h2>Register by email</h2>
-      <!-- change style - DO NOT use break tags -->
       <form @submit.prevent="registerUserByEmail()">
-        <input v-model="username" type="text" placeholder="username" /> <br />
-        <input v-model="email" type="email" placeholder="email" /> <br />
-        <input v-model="password1" type="password" placeholder="password" /> <br />
-        <input v-model="password2" type="password" placeholder="re-enter password" /> <br />
+        <input v-model="username" type="text" placeholder="username" />
+        <input v-model="email" type="email" placeholder="email" />
+        <input v-model="password1" type="password" placeholder="password" />
+        <input v-model="password2" type="password" placeholder="re-enter password" />
         <input type="submit" value="Register" />
       </form>
     </div>
@@ -55,25 +52,37 @@ const registerUserByGoogle = async () => {
 </template>
 
 <style scoped>
-/* .name {
+.name {
   padding-top: 2px;
-} */
+}
 
-/* h1 {
+h1 {
   font-size: 35px;
   font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   color: forestgreen;
   padding: 1px 25px;
-} */
+}
 
 .register-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   width: 100vw;
   height: 100vh;
   font-size: 3rem;
+  background: #5955;
+}
+
+button {
+  background-color: darkblue;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-decoration: none;
+  font-size: 16px;
+  /* margin-left: 85%; */
+  margin-top: 20px;
 }
 
 form {

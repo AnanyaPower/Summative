@@ -7,10 +7,10 @@ const props = defineProps(["id"]);
 const emits = defineEmits(["toggleModal"]);
 
 let data = (await axios.get(`https://api.themoviedb.org/3/movie/${props.id}`, {
-  params: {
-    api_key: "13fa5f30fd7d0d46db32924a921592e2",
-  }
-})).data;
+    params: {
+      api_key: "13fa5f30fd7d0d46db32924a921592e2",
+    }
+  })).data;
 </script>
 
 <template>

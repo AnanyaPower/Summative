@@ -55,6 +55,7 @@ h1 {
   width: 100vw;
   height: 100vh;
   font-size: 3rem;
+  background: #5955;
 }
 
 form {

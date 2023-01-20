@@ -2,12 +2,15 @@
 </script>
 
 <template>
-  <p>(123) 456-789 | MOVIES@CENTRALPERK.ORG</p>
+  <div class="info">
+    <p>(123) 456-789 | MOVIES@CENTRALPERK.ORG</p>
+  </div>
 </template>
 
 <style scoped>
-p {
+.info {
   text-align: center;
+  padding-bottom: 45px;
   height: 44px;
   position: absolute;
   bottom: 0;

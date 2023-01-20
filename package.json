@@ -16,6 +16,7 @@
     "@fortawesome/vue-fontawesome": "^3.0.2",
     "axios": "^1.2.3",
     "firebase": "^9.14.0",
+    "firebase-admin": "^11.5.0",
     "pinia": "^2.0.29",
     "vue": "^3.2.41",
     "vue-router": "^4.1.6"

@@ -9,9 +9,11 @@ const store = useStore();
     <h1>CENTRAL PERK</h1>
   </div>
   <div class="background">
-    <RouterLink to="/purchase" custom v-slot="{ navigate }">
-        <button @click="navigate" role="link">Back</button>
-    </RouterLink>
+    <div class="back">
+      <RouterLink to="/purchase" custom v-slot="{ navigate }">
+          <button @click="navigate" role="link">Back</button>
+      </RouterLink>
+    </div>
     <div v-for="movie in Array.from(store.cart.values())">
       <div class="container">
         <img :src="`https://image.tmdb.org/t/p/w500${movie.poster}`" />
@@ -21,9 +23,6 @@ const store = useStore();
             <button @click="store.removeFromCart(movie.id)">Remove</button>
           </div>
         </div>
-        <!-- <div class="remove">x
-        <button @click="store.removeFromCart(movie.id)">Remove</button>
-        </div> -->
       </div>
     </div>
   </div>
@@ -52,12 +51,16 @@ button {
   padding: 15px 32px;
   text-decoration: none;
   font-size: 16px;
-  margin-left: 85%;
   margin-top: 20px;
+  margin-bottom: 20px;
+}
+.back{
+  margin-left: 85%;
 }
 
 .container {
   display: flex;
+  background: #5955;
 }
 
 img {
@@ -72,14 +75,4 @@ img {
   margin-left: 100px;
   margin-top: 100px;
 }
-/* .remove {
-  background-color: darkblue;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-decoration: none;
-  font-size: 16px;
-  margin-left: 112px;
-  margin-top: 65px;
-} */
 </style>
