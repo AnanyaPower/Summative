@@ -53,7 +53,7 @@ const search = async (direction) => {
 };
 
 // SHOULD ONLY BE RUN ONCE!!!!
-// await store.populateFirestore();
+//await store.populateFirestore();
 </script>
 
 <template>
@@ -121,7 +121,6 @@ const search = async (direction) => {
 select {
   margin-left: 25px;
   margin-bottom: 25px;
-  /* margin-top: 25px; */
 }
 
 .name {

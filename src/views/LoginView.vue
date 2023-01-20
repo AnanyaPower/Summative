@@ -1,6 +1,10 @@
 <script setup>
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import {
+  signInWithEmailAndPassword,
+  signInWithPopup
+} from "firebase/auth";
 
 const router = useRouter();
 const username = ref("");
@@ -9,13 +13,31 @@ const error = ref(false);
 const props = defineProps(["id"]);
 const emits = defineEmits(["toggleModal"]);
 
-const login = () => {
-  if (username.value === "tmdb" && password.value === "movies") {
-    router.push("./purchase");
-  } else {
-    error.value = true;
+const registerUserByEmail = async () => {
+  if (password1.value !== password2.value) {
+    console.log("Password issue");
+    return;
+  }
+  try {
+    await createUserWithEmailAndPassword(auth, email.value, password1.value);
+  } catch (error) {
+    console.log(error);
   }
 };
+
+const registerUserByGoogle = async () => {
+  const provider = new GoogleAuthProvider();
+  const user = await signInWithPopup(auth, provider);
+  console.log(user);
+};
+
+// const login = () => {
+//   if (username.value === "tmdb" && password.value === "movies") {
+//     router.push("./purchase");
+//   } else {
+//     error.value = true;
+//   }
+// };
 </script>
 
 <template>

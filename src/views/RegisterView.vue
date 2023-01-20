@@ -1,11 +1,11 @@
 <script setup>
 import { ref } from "vue";
-// import { auth } from "../firebase/index";
-// import {
-//   createUserWithEmailAndPassword,
-//   GoogleAuthProvider,
-//   signInWithPopup,
-// } from "firebase/auth";
+import { auth } from "../firebase/index";
+import {
+  createUserWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from "firebase/auth";
 
 const username = ref("");
 const email = ref("");
@@ -81,7 +81,6 @@ button {
   padding: 15px 32px;
   text-decoration: none;
   font-size: 16px;
-  /* margin-left: 85%; */
   margin-top: 20px;
 }
 
