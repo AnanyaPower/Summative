@@ -7,27 +7,27 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 
-const username = ref("");
 const email = ref("");
 const password1 = ref("");
 const password2 = ref("");
 
 const registerUserByEmail = async () => {
   if (password1.value !== password2.value) {
-    console.log("Password issue");
+    // error.value = true;
+    console.log("Password issue"); // Change after testing
     return;
   }
   try {
     await createUserWithEmailAndPassword(auth, email.value, password1.value);
   } catch (error) {
-    console.log(error);
+    // Change after testing
   }
 };
 
 const registerUserByGoogle = async () => {
   const provider = new GoogleAuthProvider();
   const user = await signInWithPopup(auth, provider);
-  console.log(user);
+  console.log(user); // Change after testing 
 };
 </script>
 
@@ -41,12 +41,15 @@ const registerUserByGoogle = async () => {
       <button @click="registerUserByGoogle">Google</button>
       <h2>Register by email</h2>
       <form @submit.prevent="registerUserByEmail()">
-        <input v-model="username" type="text" placeholder="username" />
         <input v-model="email" type="email" placeholder="email" />
         <input v-model="password1" type="password" placeholder="password" />
         <input v-model="password2" type="password" placeholder="re-enter password" />
         <input type="submit" value="Register" />
       </form>
+      <div v-if="error">
+        <p>Password issue!</p> 
+        <!-- Or Passwords DO NOT match! -->
+      </div>
     </div>
   </div>
 </template>

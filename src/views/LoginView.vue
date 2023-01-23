@@ -1,43 +1,32 @@
 <script setup>
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import { auth } from "../firebase/index";
 import {
   signInWithEmailAndPassword,
-  signInWithPopup
+  signInWithPopup,
+  GoogleAuthProvider
 } from "firebase/auth";
 
 const router = useRouter();
-const username = ref("");
+const email = ref("");
 const password = ref("");
-const error = ref(false);
 const props = defineProps(["id"]);
 const emits = defineEmits(["toggleModal"]);
 
-const registerUserByEmail = async () => {
-  if (password1.value !== password2.value) {
-    console.log("Password issue");
-    return;
-  }
+const loginUserByEmailAndPassword = async () => {
   try {
-    await createUserWithEmailAndPassword(auth, email.value, password1.value);
+    await signInWithEmailAndPassword(auth, email.value, password.value);
+    router.push('/purchase');
   } catch (error) {
-    console.log(error);
   }
 };
 
-const registerUserByGoogle = async () => {
+const loginUserByGoogle = async () => {
   const provider = new GoogleAuthProvider();
-  const user = await signInWithPopup(auth, provider);
-  console.log(user);
+  await signInWithPopup(auth, provider);
+  router.push('/purchase');
 };
-
-// const login = () => {
-//   if (username.value === "tmdb" && password.value === "movies") {
-//     router.push("./purchase");
-//   } else {
-//     error.value = true;
-//   }
-// };
 </script>
 
 <template>
@@ -45,15 +34,15 @@ const registerUserByGoogle = async () => {
     <h1>CENTRAL PERK</h1>
   </div>
   <div class="login-container">
-    <h2>Login</h2>
-    <form @submit.prevent="login()">
-      <input type="text" placeholder="Username" v-model="username" />
-      <input type="password" placeholder="Password" v-model="password" />
+    <h1>Login</h1>
+    <h2>Login by Google</h2>
+    <button @click="loginUserByGoogle">Google</button>
+    <h2>Login by Email</h2>
+    <form @submit.prevent="loginUserByEmailAndPassword()">
+      <input v-model="email" type="email" placeholder="email" />
+      <input v-model="password" type="password" placeholder="password" />
       <input type="submit" value="Login" />
     </form>
-    <div v-if="error">
-      <p>Incorrect Username or Password!</p>
-    </div>
   </div>
 </template>
 

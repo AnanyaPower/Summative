@@ -1,8 +1,8 @@
 <script setup>
 import axios from "axios";
-import { ref } from 'vue';
-import SiteModal from '../components/SiteModal.vue';
-import { useStore } from "../store/index.js"
+import { ref } from "vue";
+import SiteModal from "../components/SiteModal.vue";
+import { useStore } from "../store/index.js";
 
 const store = useStore();
 const genre = ref(28);
@@ -26,7 +26,7 @@ const getGenres = async () => {
   searchResults.value = [];
   criteria.value = "";
   await store.getMovies(genre.value);
-}
+};
 
 const search = async (direction) => {
   page.value += direction;
@@ -60,10 +60,7 @@ const search = async (direction) => {
   <div class="name">
     <h1>CENTRAL PERK</h1>
   </div>
-  <!-- Delete div for searchbar if no css used -->
-  <div class="searchbar">
-    <input type="search" v-model="criteria" @keydown.enter="search(0)" />
-  </div>
+  <input type="search" v-model="criteria" @keydown.enter="search(0)" />
   <select v-model="genre" @change="getGenres()">
       <option value="Action">Action</option>
       <option value="Animation">Animation</option>
@@ -92,32 +89,21 @@ const search = async (direction) => {
     </template>
     <div class="purchase-container">
       <template v-if="searchResults.length">
-        <img
-          v-for="movie in searchResults"
+        <img v-for="movie in searchResults"
           :id="movie.id"
           @click="openModal(movie.id)"
-          :src="`https://image.tmdb.org/t/p/w500${movie.image}`"
-        />
+          :src="`https://image.tmdb.org/t/p/w500${movie.image}`"/>
       </template>
-      <img 
-        v-for="movie in store.movies" 
+      <img v-for="movie in store.movies" 
         :id="movie.id" 
         @click="openModal(movie.id)"
-        :src="`https://image.tmdb.org/t/p/w500${movie.poster}`"
-        />
+        :src="`https://image.tmdb.org/t/p/w500${movie.image}`"/>
       <SiteModal v-if="showModal" @toggleModal="closeModal()" :id="selectedId" />
     </div>
   </div>
 </template>
 
 <style scoped>
-.searchbar {
-  margin-left: 25px;
-  /* margin-top: 25px; */
-  /* width: 100%; centers search bar
-  text-align:center; centers search bar*/
-}
-
 select {
   margin-left: 25px;
   margin-bottom: 25px;
@@ -133,13 +119,6 @@ h1 {
   color: forestgreen;
   padding: 1px 25px;
 }
-
-/* h3 {
-  font-size: 35px;
-  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  color: forestgreen;
-  padding: 1px 25px;
-} */
 
 table {
   margin: auto;
